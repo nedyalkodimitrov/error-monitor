@@ -3,21 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Error;
-use http\Env\Request;
+
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function registerError(\Illuminate\Http\Client\Request $request)
+    public function registerError(Request $request)
     {
-//        Log::log($request->message);
+        Log::error($request->message);
 
-        return 1;
+
         try {
             $error = new Error();
             $error->name = "q1";
