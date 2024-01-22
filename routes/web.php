@@ -19,11 +19,11 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/admin', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('home')->middleware("auth");
 
 Route::group(["prefix" => "admin",
-    "name" => "admin.",
+    "as" => "admin.",
     "middleware" => "auth"], function () {
 
     Route::group([
-        "name" => "technology.",
+        "as" => "technology.",
     ], function () {
         Route::get('/technologies', [App\Http\Controllers\Admin\TechnologyController::class, 'showTechnologies]'])->name('showAll');
         Route::get('/technologies/{id}', [App\Http\Controllers\Admin\TechnologyController::class, 'showTechnology'])->name('showOne');
@@ -33,7 +33,7 @@ Route::group(["prefix" => "admin",
         Route::delete('/technologies/{id}', [App\Http\Controllers\Admin\TechnologyController::class, 'deleteTechnology'])->name('delete');
 
         Route::group([
-            "name" => "version.",
+            "as" => "version.",
             "prefix" => "technologies/{id}"
         ], function () {
             Route::get('/version', [App\Http\Controllers\Admin\TechnologyController::class, 'showTechnologyVersionForm'])->name('showForm');
@@ -45,31 +45,39 @@ Route::group(["prefix" => "admin",
 
 
     Route::group([
-        "name" => "app.",
+        "as" => "app.",
     ], function () {
         Route::get('/apps', [App\Http\Controllers\Admin\AppController::class, 'showApps'])->name('showAll');
-        Route::get('/apps/{id}', [App\Http\Controllers\Admin\AppController::class, 'showApp'])->name('showOne');
+        Route::get('/apps/{appId}', [App\Http\Controllers\Admin\AppController::class, 'showApp'])->name('showOne');
         Route::get('/app', [App\Http\Controllers\Admin\AppController::class, 'showAppForm'])->name('showForm');
         Route::post('/app', [App\Http\Controllers\Admin\AppController::class, 'createApp'])->name('create');
-        Route::patch('/apps/{id}', [App\Http\Controllers\Admin\AppController::class, 'editApp'])->name('edit');
-        Route::delete('/apps/{id}', [App\Http\Controllers\Admin\AppController::class, 'deleteApp'])->name('delete');
+        Route::patch('/apps/{appId}', [App\Http\Controllers\Admin\AppController::class, 'editApp'])->name('edit');
+        Route::delete('/apps/{appId}', [App\Http\Controllers\Admin\AppController::class, 'deleteApp'])->name('delete');
 
         Route::group([
-            "name" => "version.",
-            "prefix" => "apps/{id}"
+            "as" => "version.",
+            "prefix" => "apps/{appId}"
         ], function () {
-            Route::get('/version', [App\Http\Controllers\Admin\AppController::class, 'showAppVersionForm'])->name('showForm');
+            Route::get('/versions/{versionId}', [App\Http\Controllers\Admin\AppController::class, 'showAppVersion'])->name('showOne');
             Route::post('/version', [App\Http\Controllers\Admin\AppController::class, 'createAppVersion'])->name('create');
             Route::patch('/version/{versionId}', [App\Http\Controllers\Admin\AppController::class, 'editAppVersion'])->name('edit');
             Route::delete('/version/{versionId}', [App\Http\Controllers\Admin\AppController::class, 'deleteAppVersion'])->name('delete');
         });
+
+        Route::group([
+            "as" => "bug.",
+            "prefix" => "apps/{id}/version/{versionId}"
+        ], function () {
+            Route::get('/bug/{bugId}', [App\Http\Controllers\Admin\AppController::class, 'showAppVersionForm'])->name('showForm');
+            Route::post('/bug', [App\Http\Controllers\Admin\AppController::class, 'createAppVersion'])->name('create');
+            Route::patch('/bug/{bugId}', [App\Http\Controllers\Admin\AppController::class, 'editAppVersion'])->name('edit');
+            Route::delete('/bug/{bugId}', [App\Http\Controllers\Admin\AppController::class, 'deleteAppVersion'])->name('delete');
+        });
     });
 
 
-
-
     Route::group([
-        "name" => "user.",
+        "as" => "user.",
     ], function () {
         Route::get('/users', [App\Http\Controllers\Admin\UserController::class, 'showUsers'])->name('showAll');
         Route::get('/users/{id}', [App\Http\Controllers\Admin\UserController::class, 'showUser'])->name('showOne');
@@ -80,7 +88,7 @@ Route::group(["prefix" => "admin",
     });
 
     Route::group([
-        "name" => "role.",
+        "as" => "role.",
     ], function () {
         Route::get('/roles', [App\Http\Controllers\Admin\RoleController::class, 'showRoles'])->name('showAll');
         Route::get('/roles/{id}', [App\Http\Controllers\Admin\RoleController::class, 'showRole'])->name('showOne');
@@ -91,7 +99,7 @@ Route::group(["prefix" => "admin",
     });
 
     Route::group([
-        "name" => "permission.",
+        "as" => "permission.",
     ], function () {
         Route::get('/permissions', [App\Http\Controllers\Admin\PermissionController::class, 'showPermissions'])->name('showAll');
         Route::get('/permissions/{id}', [App\Http\Controllers\Admin\PermissionController::class, 'showPermission'])->name('showOne');
@@ -100,11 +108,6 @@ Route::group(["prefix" => "admin",
         Route::patch('/permissions/{id}', [App\Http\Controllers\Admin\PermissionController::class, 'editPermission'])->name('edit');
         Route::delete('/permissions/{id}', [App\Http\Controllers\Admin\PermissionController::class, 'deletePermission'])->name('delete');
     });
-
-
-    
-
-
 });
 
 

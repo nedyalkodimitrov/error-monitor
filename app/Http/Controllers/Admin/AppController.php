@@ -3,40 +3,74 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\App;
+use App\Models\AppVersion;
+use App\Models\Technology;
 use Illuminate\Http\Request;
 
 class AppController extends Controller
 {
     public function showApps()
     {
-        return view('admin.apps.index');
+        $apps = App::all();
+        return view('panels.admin.pages.apps.apps')->with('apps', $apps);
     }
 
-    public function showApp()
+    public function showApp($appId)
     {
-        return view('admin.apps.index');
+        $app = App::findOrFail($appId);
+        $technologies = Technology::all();
+        return view('panels.admin.pages.apps.app')->with('app', $app)->with('technologies', $technologies);
     }
 
     public function showAppForm()
     {
-        return view('admin.apps.index');
+        $technologies = Technology::all();
+        return view('panels.admin.pages.apps.appForm')->with('technologies', $technologies);
     }
 
-    public function createApp()
+    public function createApp(Request $request)
     {
-        return view('admin.apps.create');
+        $app = App::create([
+            "name" => $request->name,
+            "description" => $request->description,
+            "technology" => $request->technology,
+            "technology_version" => $request->technology_version,
+
+        ]);
+
+        return redirect()->route('admin.app.showForm');
     }
 
-    public function editApp($id)
+    public function editApp($appId, Request $request)
     {
-        return view('admin.apps.edit');
+        $app = App::findOrFail($appId)->update([
+            "name" => $request->name,
+            "description" => $request->description,
+            "technology" => $request->technology,
+            "technology_version" => $request->technology_version,
+
+        ]);
+
+        return redirect()->back();
     }
 
-    public function deleteApp($id)
+    public function deleteApp($appId)
     {
-        return view('admin.apps.index');
+        App::deletedOrFail($appId);
+
+        return redirect()->route('admin.apps.showAll');
+
+
     }
 
+
+    public function showAppVersion($versionId)
+    {
+        $version  = AppVersion::findOrFail($versionId);
+
+        return view('panels.admin.pages.apps.versions.version')->with('version', $version);
+    }
 
 
     public function showAppVersionForm($id)

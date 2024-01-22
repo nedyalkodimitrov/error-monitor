@@ -7,25 +7,26 @@
     >
         <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
-                <a
-                    href="#"
-                    class="list-group-item list-group-item-action py-2 ripple"
-                    aria-current="true"
-                >
-                    <i class="fas fa-home fa-fw me-3"></i
-                    ><span>{{__("Home")}}</span>
+                <a href="{{route("admin.app.showAll")}}"
+                   class="list-group-item list-group-item-action py-2 ripple">
+                    <i class="fas fa-building fa-fw me-3"></i><span>{{__("Apps")}}</span>
                 </a>
 
-                <a
-                    href="#"
-                    class="list-group-item list-group-item-action py-2 ripple"
-                ><i class="fas fa-building fa-fw me-3"></i><span>{{__("Projects")}}</span></a
-                >
-                <a
-                    href="#"
-                    class="list-group-item list-group-item-action py-2 ripple"
-                ><i class="fas fa-users fa-fw me-3"></i><span>{{__("Users")}}</span></a
-                >
+{{--                <a href="#"--}}
+{{--                   class="list-group-item list-group-item-action py-2 ripple">--}}
+{{--                    <i class="fas fa-building fa-fw me-3"></i><span>{{__("Apps")}}</span>--}}
+{{--                </a>--}}
+                <a href="#"
+                        class="list-group-item list-group-item-action py-2 ripple">
+                    <i class="fas fa-building fa-fw me-3"></i><span>{{__("Technologies")}}</span>
+                </a> <a href="#"
+                        class="list-group-item list-group-item-action py-2 ripple">
+                    <i class="fas fa-building fa-fw me-3"></i><span>{{__("Roles")}}</span>
+                </a>
+                <a href="#"
+                   class="list-group-item list-group-item-action py-2 ripple">
+                    <i class="fas fa-users fa-fw me-3"></i><span>{{__("Users")}}</span>
+                </a>
 
             </div>
         </div>
