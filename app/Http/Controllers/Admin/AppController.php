@@ -67,7 +67,8 @@ class AppController extends Controller
 
     public function showAppVersion($versionId)
     {
-        $version  = AppVersion::findOrFail($versionId);
+        $version = AppVersion::findOrFail($versionId)->with('getApp')->first();
+
 
         return view('panels.admin.pages.apps.versions.version')->with('version', $version);
     }
@@ -77,22 +78,39 @@ class AppController extends Controller
     {
         return view('admin.apps.version.create');
     }
-    public function createAppVersion($id)
+
+    public function createAppVersion($appId, Request $request)
     {
-        return view('admin.apps.version.create');
+        $appVersion = AppVersion::create([
+            "app_id" => $appId,
+            "version" => $request->appVersion,
+        ]);
+        return response()->json(["id" => $appVersion->id, "version" => $appVersion->version]);
+
     }
 
-    public function editAppVersion($id)
+    public function editAppVersion(App $app, AppVersion $version, Request $request)
     {
-        return view('admin.apps.version.edit');
+
+        var_dump($request->request->all());
+        exit();
+        $appVersion = $version->update([
+            "version" => $request->appVersion,
+        ]);
+
+        return response()->json([
+            "success" => true,
+            "id" => $version->id,
+            "version" => $appVersion->appVersion
+        ], 200);
     }
 
     public function deleteAppVersion($id)
     {
-        return view('admin.apps.index');
+        AppVersion::deletedOrFail($id);
+
+        return response()->json(["success" => true]);
     }
-
-
 
 
 }

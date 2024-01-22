@@ -60,7 +60,7 @@ Route::group(["prefix" => "admin",
         ], function () {
             Route::get('/versions/{versionId}', [App\Http\Controllers\Admin\AppController::class, 'showAppVersion'])->name('showOne');
             Route::post('/version', [App\Http\Controllers\Admin\AppController::class, 'createAppVersion'])->name('create');
-            Route::patch('/version/{versionId}', [App\Http\Controllers\Admin\AppController::class, 'editAppVersion'])->name('edit');
+            Route::put('/version/{versionId}', [App\Http\Controllers\Admin\AppController::class, 'editAppVersion'])->name('edit');
             Route::delete('/version/{versionId}', [App\Http\Controllers\Admin\AppController::class, 'deleteAppVersion'])->name('delete');
         });
 

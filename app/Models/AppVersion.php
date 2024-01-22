@@ -9,6 +9,15 @@ class AppVersion extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        "app_id",
+        "version",
+//        "description",
+//        "release_date",
+//        "is_active",
+    ];
+
+
     public function getApp(){
         return $this->belongsTo(App::class, "app_id", "id");
     }
