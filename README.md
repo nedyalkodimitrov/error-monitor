@@ -15,7 +15,4 @@
 3. Run `php artisan migrate` to execute the migrations
 4. Run `php artisan serve`
 
----
-
-This version follows the standard format for a README file, ensuring clarity and correctness.
     
