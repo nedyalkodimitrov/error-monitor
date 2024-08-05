@@ -25,7 +25,7 @@ Route::group(["prefix" => "admin",
     Route::group([
         "as" => "technology.",
     ], function () {
-        Route::get('/technologies', [App\Http\Controllers\Admin\TechnologyController::class, 'showTechnologies]'])->name('showAll');
+        Route::get('/technologies', [App\Http\Controllers\Admin\TechnologyController::class, 'showTechnologies'])->name('showAll');
         Route::get('/technologies/{id}', [App\Http\Controllers\Admin\TechnologyController::class, 'showTechnology'])->name('showOne');
         Route::get('/technology', [App\Http\Controllers\Admin\TechnologyController::class, 'showTechnologyForm'])->name('showForm');
         Route::post('/technology', [App\Http\Controllers\Admin\TechnologyController::class, 'createTechnology'])->name('create');
@@ -65,13 +65,13 @@ Route::group(["prefix" => "admin",
         });
 
         Route::group([
-            "as" => "bug.",
+            "as" => "error.",
             "prefix" => "apps/{id}/version/{versionId}"
         ], function () {
-            Route::get('/bug/{bugId}', [App\Http\Controllers\Admin\AppController::class, 'showAppVersionForm'])->name('showForm');
-            Route::post('/bug', [App\Http\Controllers\Admin\AppController::class, 'createAppVersion'])->name('create');
-            Route::patch('/bug/{bugId}', [App\Http\Controllers\Admin\AppController::class, 'editAppVersion'])->name('edit');
-            Route::delete('/bug/{bugId}', [App\Http\Controllers\Admin\AppController::class, 'deleteAppVersion'])->name('delete');
+            Route::get('/error/{errorId}', [App\Http\Controllers\Admin\ErrorController::class, 'showError'])->name('show');
+            Route::post('/error', [App\Http\Controllers\Admin\ErrorController::class, 'createAppVersion'])->name('create');
+            Route::patch('/error/{errorId}', [App\Http\Controllers\Admin\ErrorController::class, 'editAppVersion'])->name('edit');
+            Route::delete('/error/{errorId}', [App\Http\Controllers\Admin\ErrorController::class, 'deleteAppVersion'])->name('delete');
         });
     });
 

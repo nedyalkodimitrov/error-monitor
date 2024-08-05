@@ -94,6 +94,35 @@
 
 
 
+    <div class="modal fade" id="addAppVersionModal" tabindex="-1" aria-labelledby="addAppVersionModal"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create App</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form action="" id="addAppVersionForm" method="POST">
+                    <div class="modal-body">
+                        <div class="col-12">
+                            <label for="appVersionInput" class="form-label">Version</label>
+                            <input type="text" placeholder="App Version" class="form-control" id="appVersion">
+                            <input type="text" id="appId" value="{{$app->id}}" hidden>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Create Version</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="modal fade" id="editAppModal" tabindex="-1" aria-labelledby="editAppModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -131,11 +160,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
             integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{asset("assets/js/ajax.js")}}"></script>
     <script src="{{asset("assets-admin/js/url.js")}}"></script>
     <script src="{{asset("assets-admin/js/appVersion/createAppVersion.js")}}"></script>
-{{--    <script src="{{asset("assets-admin/js/app/createApp.js")}}"></script>--}}
+    {{--    <script src="{{asset("assets-admin/js/app/createApp.js")}}"></script>--}}
 
 @endsection
 

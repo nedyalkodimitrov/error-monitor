@@ -9,7 +9,7 @@ class TechnologyController extends Controller
 {
     public function showTechnologies()
     {
-        return view('admin.technology.index');
+        return view('panels.admin.pages.technologies.technologies');
     }
 
     public function showTechnology()
@@ -57,6 +57,4 @@ class TechnologyController extends Controller
     {
         return view('admin.technology.index');
     }
-
-
 }

@@ -32,7 +32,7 @@
 
                 <ul class="list-group">
                     @foreach($version->getErrors as $error)
-                        <li class="list-group-item list-group-item-action"><a href="">{{$error->name}}
+                        <li class="list-group-item list-group-item-action"><a href="{{route("admin.app.error.show", ["errorId" => $error->id, "id" => $version->getApp->id, "versionId" => $version->id])}}">{{$error->name}}
                                 |{{$error->description}}</a></li>
                     @endforeach
                 </ul>
