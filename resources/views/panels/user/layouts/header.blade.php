@@ -67,7 +67,7 @@
 
             <!-- Brand -->
             <a class="navbar-brand" href="#">
-                <h2>Dynamic Cities</h2>
+                <h2>Error Tracking</h2>
             </a>
             <!-- Search form -->
 

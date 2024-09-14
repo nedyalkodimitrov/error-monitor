@@ -26,6 +26,7 @@ class AppController extends Controller
     public function showAppForm()
     {
         $technologies = Technology::all();
+
         return view('panels.admin.pages.apps.appForm')->with('technologies', $technologies);
     }
 
@@ -44,12 +45,11 @@ class AppController extends Controller
 
     public function editApp($appId, Request $request)
     {
-        $app = App::findOrFail($appId)->update([
+        App::findOrFail($appId)->update([
             "name" => $request->name,
             "description" => $request->description,
             "technology" => $request->technology,
             "technology_version" => $request->technology_version,
-
         ]);
 
         return redirect()->back();
@@ -60,15 +60,12 @@ class AppController extends Controller
         App::deletedOrFail($appId);
 
         return redirect()->route('admin.apps.showAll');
-
-
     }
 
 
     public function showAppVersion($versionId)
     {
         $version = AppVersion::findOrFail($versionId)->with('getApp')->first();
-
 
         return view('panels.admin.pages.apps.versions.version')->with('version', $version);
     }
@@ -86,14 +83,10 @@ class AppController extends Controller
             "version" => $request->appVersion,
         ]);
         return response()->json(["id" => $appVersion->id, "version" => $appVersion->version]);
-
     }
 
-    public function editAppVersion(App $app, AppVersion $version, Request $request)
+    public function editAppVersion(AppVersion $version, Request $request)
     {
-
-        var_dump($request->request->all());
-        exit();
         $appVersion = $version->update([
             "version" => $request->appVersion,
         ]);

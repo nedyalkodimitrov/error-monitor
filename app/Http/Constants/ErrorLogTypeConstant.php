@@ -8,6 +8,4 @@ class ErrorLogTypeConstant
     const SEND_ERROR_ON_EMAIL = "send_error_on_email";
     const DELETE_ERROR = "delete_error";
     const RESOLVED_ERROR = "resolved_error";
-
-
 }

@@ -1,4 +1,3 @@
-
 $('#createVersionBtn').on("click",function (e) {
     let form = document.getElementById("addAppVersionForm");
     let formData = new FormData(form);

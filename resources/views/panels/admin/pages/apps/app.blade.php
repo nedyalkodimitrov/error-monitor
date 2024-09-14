@@ -1,10 +1,8 @@
 @extends("panels.admin.layouts.master")
 
-
 @section("scripts")
 
 @endsection
-
 
 @section('title')
     Admin Panel | Create App
@@ -122,7 +120,6 @@
     </div>
 
 
-
     <div class="modal fade" id="editAppModal" tabindex="-1" aria-labelledby="editAppModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -160,13 +157,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
             integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{asset("assets/js/ajax.js")}}"></script>
     <script src="{{asset("assets-admin/js/url.js")}}"></script>
     <script src="{{asset("assets-admin/js/appVersion/createAppVersion.js")}}"></script>
-    {{--    <script src="{{asset("assets-admin/js/app/createApp.js")}}"></script>--}}
 
 @endsection
 
