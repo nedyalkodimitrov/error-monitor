@@ -5,7 +5,8 @@
         .app-container__versions {
 
         }
-        .green{
+
+        .green {
             background-color: rgba(0, 128, 0, 0.42);
         }
     </style>
@@ -28,12 +29,13 @@
                                 <p class="col">{{$app->technology_version}}</p>
                                 <span class="col-2"><i class="fa-solid fa-chevron-down"></i></span>
                                 @php
-                                $version = 1;
+                                    $version = 1;
                                 @endphp
-                                @foreach($app->getVersions()->orderBy("created_at", "DESC")->get() as $appVersion)
+                                @foreach($app->versions()->orderBy("created_at", "DESC")->get() as $appVersion)
 
-                                    <div class="ml-4 col-12 app-container__versions @if($version == 1) green @endif" style="padding-left: 4em" >
-                                          <p> <i> {{$appVersion->version}}</i></p>
+                                    <div class="ml-4 col-12 app-container__versions @if($version == 1) green @endif"
+                                         style="padding-left: 4em">
+                                        <p><i> {{$appVersion->version}}</i></p>
                                     </div>
                                     <hr class="col-11 mt-1 mx-auto">
 

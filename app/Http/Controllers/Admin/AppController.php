@@ -65,7 +65,7 @@ class AppController extends Controller
 
     public function showAppVersion($versionId)
     {
-        $version = AppVersion::findOrFail($versionId)->with('getApp')->first();
+        $version = AppVersion::findOrFail($versionId)->with('app')->first();
 
         return view('panels.admin.pages.apps.versions.version')->with('version', $version);
     }
