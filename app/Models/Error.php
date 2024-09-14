@@ -13,7 +13,6 @@ class Error extends Model
         return $this->belongsTo(Priority::class, "priority_id");
     }
 
-
     public function getAppVersion(){
         return $this->belongsTo(AppVersion::class);
     }

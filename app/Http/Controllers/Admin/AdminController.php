@@ -11,8 +11,4 @@ class AdminController extends Controller
     {
         return view('panels.admin.pages.home');
     }
-
-
-
-
 }

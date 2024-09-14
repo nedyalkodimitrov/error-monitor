@@ -25,7 +25,7 @@ Route::group(["prefix" => "admin",
     Route::group([
         "as" => "technology.",
     ], function () {
-        Route::get('/technologies', [App\Http\Controllers\Admin\TechnologyController::class, 'showTechnologies'])->name('showAll');
+        Route::get('/technologies', [App\Http\Controllers\Admin\TechnologyController::class, 'showTechnologies]'])->name('showAll');
         Route::get('/technologies/{id}', [App\Http\Controllers\Admin\TechnologyController::class, 'showTechnology'])->name('showOne');
         Route::get('/technology', [App\Http\Controllers\Admin\TechnologyController::class, 'showTechnologyForm'])->name('showForm');
         Route::post('/technology', [App\Http\Controllers\Admin\TechnologyController::class, 'createTechnology'])->name('create');

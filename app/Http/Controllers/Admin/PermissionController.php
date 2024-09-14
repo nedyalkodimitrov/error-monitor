@@ -9,7 +9,7 @@ class PermissionController extends Controller
 {
     public function showPermissions()
     {
-        return view('admin.permissions.index');
+        return view('');
     }
 
     public function showPermission()

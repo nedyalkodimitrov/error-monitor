@@ -10,7 +10,6 @@ class ErrorController extends Controller
 {
     public function showError($id)
     {
-
         $error = Error::find($id);
 
         return view("panels.admin.pages.errors.error", ["error" => $error]);
