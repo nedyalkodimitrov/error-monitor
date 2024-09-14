@@ -1,6 +1,5 @@
 @extends("panels.admin.layouts.master")
 
-
 @section('title')
     Admin Panel | Create App
 @endsection
@@ -15,12 +14,12 @@
                 <input class="form-control" type="text" id="title" name="name" placeholder="BestApp">
             </div>
 
-            <div class="form-group">
+            <div class="form-group mt-2">
                 <label for="description">Description</label>
                 <textarea class="form-control" id="description" name="description" rows="3"> </textarea>
             </div>
 
-            <livewire:app.app-form :technologies="$technologies"/>
+            <livewire:panels.admin.pages.apps.app-form :technologies="$technologies"/>
             <button type="submit" class="btn btn-primary col-12 mt-2">Create</button>
         </form>
     </div>
