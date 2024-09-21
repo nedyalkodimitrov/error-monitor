@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('version', 50);
             $table->unsignedBigInteger('app_id');
             $table->foreign('app_id')->references('id')->on('apps');
+            $table->string('secret_key', 255);
             $table->timestamps();
         });
     }
