@@ -83,28 +83,15 @@
 
 
     <div class="modal fade" id="addAppVersionModal" tabindex="-1" aria-labelledby="addAppVersionModal"
-         aria-hidden="true">
+         aria-hidden="true" wire:ignore>
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Create App</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Create App Version</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="" id="addAppVersionForm" method="POST">
-                    <div class="modal-body">
-                        <div class="col-12">
-                            <label for="appVersionInput" class="form-label">Version</label>
-                            <input type="text" placeholder="App Version" class="form-control" id="appVersion">
-                            <input type="text" id="appId" value="{{$app->id}}" hidden>
-
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Create Version</button>
-                    </div>
-                </form>
+                @livewire('panels.admin.pages.apps.add-version-form', ['app' => $app])
             </div>
         </div>
     </div>

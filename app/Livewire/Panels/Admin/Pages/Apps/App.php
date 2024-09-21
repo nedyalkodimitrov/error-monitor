@@ -16,6 +16,7 @@ class App extends Component
 
 
     #[On('editApp')]
+    #[On('addAppVersion')]
     public function refreshApp()
     {
         $this->app->refresh();

@@ -11,12 +11,16 @@
 
             <div class="container row col-12">
                 <div class="col-1"></div>
-                <h1 class="col-10 text-center">{{$version->getApp->name}} <span
+                <h1 class="col-10 text-center">{{$version->app->name}} <span
                         id="title-version">{{$version->version}}</span></h1>
                 <div class="col-1 text-end align-self-center"><i class="fas fa-edit" data-bs-toggle="modal"
                                                                  data-bs-target="#editAppVersionModal"></i></div>
             </div>
 
+            <div class="row">
+                <p class="col">Secret Key</p>
+                <p class="col">{{\Illuminate\Support\Facades\Crypt::decryptString($version->secret_key)}}</p>
+            </div>
 
         </div>
 
@@ -31,8 +35,8 @@
                 </div>
 
                 <ul class="list-group">
-                    @foreach($version->getErrors as $error)
-                        <li class="list-group-item list-group-item-action"><a href="{{route("admin.app.error.show", ["errorId" => $error->id, "id" => $version->getApp->id, "versionId" => $version->id])}}">{{$error->name}}
+                    @foreach($version->errors as $error)
+                        <li class="list-group-item list-group-item-action"><a href="{{route("admin.app.error.show", ["errorId" => $error->id, "id" => $version->app->id, "versionId" => $version->id])}}">{{$error->name}}
                                 |{{$error->description}}</a></li>
                     @endforeach
                 </ul>
@@ -95,8 +99,8 @@
                         <div class="col-12">
                             <label for="" class="form-label">Version</label>
                             <input type="text" name="appVersion" id="appVersion" placeholder="v.01" value="{{$version->version}}" class="form-control">
-                            <input type="text" name="appId" value="{{$version->getApp->id}}" id="appId" hidden>
-                            <input type="text" name="appVersionId" value="{{$version->getApp->id}}" id="versionId" hidden>
+                            <input type="text" name="appId" value="{{$version->app->id}}" id="appId" hidden>
+                            <input type="text" name="appVersionId" value="{{$version->app->id}}" id="versionId" hidden>
                         </div>
                     </div>
                 </div>
