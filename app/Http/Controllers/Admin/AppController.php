@@ -62,18 +62,11 @@ class AppController extends Controller
         return redirect()->route('admin.apps.showAll');
     }
 
-
     public function showAppVersion($versionId)
     {
         $version = AppVersion::findOrFail($versionId)->with('app')->first();
 
         return view('panels.admin.pages.apps.versions.version')->with('version', $version);
-    }
-
-
-    public function showAppVersionForm($id)
-    {
-        return view('admin.apps.version.create');
     }
 
     public function createAppVersion($appId, Request $request)
@@ -104,6 +97,4 @@ class AppController extends Controller
 
         return response()->json(["success" => true]);
     }
-
-
 }

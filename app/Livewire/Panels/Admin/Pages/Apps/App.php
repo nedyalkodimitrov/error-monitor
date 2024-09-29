@@ -14,7 +14,6 @@ class App extends Component
         return view('livewire.panels.admin.pages.apps.app');
     }
 
-
     #[On('editApp')]
     #[On('addAppVersion')]
     public function refreshApp()
